@@ -1,0 +1,501 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>编写你的第一个Servlet · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Servlet的生命周期.html" />
+    
+    
+    <link rel="prev" href="带着问题去学习.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../test/level2.html">
+            
+                <a href="../test/level2.html">
+            
+                    
+                    二级目录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../test/level3.html">
+            
+                <a href="../test/level3.html">
+            
+                    
+                    三级目录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1.1" data-path="../test/level4.html">
+            
+                <a href="../test/level4.html">
+            
+                    
+                    四级目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Servlet.html">
+            
+                <a href="Servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="带着问题去学习.html">
+            
+                <a href="带着问题去学习.html">
+            
+                    
+                    带着问题去学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="编写你的第一个Servlet.html">
+            
+                <a href="编写你的第一个Servlet.html">
+            
+                    
+                    编写你的第一个Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="Servlet的生命周期.html">
+            
+                <a href="Servlet的生命周期.html">
+            
+                    
+                    Servlet的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="WebServlet注解.html">
+            
+                <a href="WebServlet注解.html">
+            
+                    
+                    @WebServlet注解来开发Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >编写你的第一个Servlet</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7F16;&#x5199;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;servlet">&#x7F16;&#x5199;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;Servlet</h1>
+<h2 id="0-&#x5E26;&#x7740;&#x95EE;&#x9898;&#x6765;&#x5B66;&#x4E60;&#x3002;">0. &#x5E26;&#x7740;&#x95EE;&#x9898;&#x6765;&#x5B66;&#x4E60;&#x3002;</h2>
+<ol>
+<li>&#x4EC0;&#x4E48;&#x662F;<code>Servlet</code>?&#x5B9A;&#x4E49;&#xFF1F;</li>
+<li>&#x4EC0;&#x4E48;&#x662F;<code>Servlet</code>&#x5BB9;&#x5668;&#xFF1F;</li>
+</ol>
+<h2 id="1-&#x4F7F;&#x7528;maven&#x6784;&#x9020;web&#x9879;&#x76EE;">1. &#x4F7F;&#x7528;maven&#x6784;&#x9020;web&#x9879;&#x76EE;</h2>
+<p>&#x65B0;&#x5EFA;maven webapp&#x9879;&#x76EE;&#xFF0C;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>src
+    main
+        java
+            samples.servlet
+                HelloWorldServlet.java
+        webapp
+            WEB-INF
+                web.xml
+            index.jsp
+pom.xml
+</code></pre><h2 id="2-pom-&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;javaxservlet-api&#x4F9D;&#x8D56;">2. pom &#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;<code>javax.servlet-api</code>&#x4F9D;&#x8D56;</h2>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.servlet-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</code></pre>
+<h2 id="3-&#x7F16;&#x5199;servlet&#x7C7B;helloworldservletjava">3. &#x7F16;&#x5199;Servlet&#x7C7B;<code>HelloWorldServlet.java</code></h2>
+<p><code>HelloWorldServlet</code>&#x7C7B;&#x662F;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;<code>Servlet</code>&#xFF0C;&#x5B83;&#x7684;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x8F93;&#x51FA;&#x4E00;&#x53E5;Hello World.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorldServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>{
+        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);
+        PrintWriter out = resp.getWriter();
+
+        <span class="hljs-keyword">try</span> {
+            out.println(<span class="hljs-string">&quot;&lt;html&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;head&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;title&gt;HelloWorld servlet&lt;/title&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;/head&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;body&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;h2&gt;Hello World.&lt;/h2&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;/body&gt;&quot;</span>);
+            out.println(<span class="hljs-string">&quot;&lt;/html&gt;&quot;</span>);
+        } <span class="hljs-keyword">finally</span> {
+            out.close();
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>{
+        <span class="hljs-keyword">super</span>.doPost(req, resp);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getServletInfo</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;HelloWorldServlet&quot;</span>;
+    }
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<code>Servlet</code>&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x6240;&#x6709;&#x7684;<code>Servlet</code>&#x90FD;&#x5FC5;&#x987B;&#x7EE7;&#x627F;<code>javax.servlet.GenericServlet</code>&#xFF0C;&#x6216;<code>javax.servlet.http.HttpServlet</code>&#xFF1B;</li>
+<li>&#x91CD;&#x5199;&#x57FA;&#x7C7B;&#x7684;<code>doGet</code>&#x3001;<code>doPost</code>&#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;<code>get</code>&#x8BF7;&#x6C42;&#x6216;<code>post</code>&#x8BF7;&#x6C42;&#x5230;&#x6765;&#x65F6;&#xFF0C;&#x4F1A;&#x88AB;&#x6620;&#x5C04;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;<code>get</code>&#x8BF7;&#x6C42;&#xFF0C;&#x4F1A;&#x6267;&#x884C;<code>doGet</code>&#x65B9;&#x6CD5;&#xFF1B;</li>
+<li><code>HttpServletRequest</code>&#x548C;<code>HttpServletResponse</code>&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;<code>doGet</code>&#x3001;<code>doPost</code>&#x7B49;&#x65B9;&#x6CD5;&#x7684;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x540E;&#x9762;&#x518D;&#x5177;&#x4F53;&#x7814;&#x7A76;&#xFF1B;</li>
+</ol>
+<h2 id="4-&#x914D;&#x7F6E;webxml">4. &#x914D;&#x7F6E;web.xml</h2>
+<p>&#x4E0A;&#x8FF0;&#x6211;&#x4EEC;&#x5199;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;<code>HelloWorldServlet</code>&#x7C7B;&#xFF0C;&#x5B83;&#x7EE7;&#x627F;&#x81EA;<code>HttpServlet</code>&#x7C7B;&#x3002;&#x8981;&#x628A;&#x6B64;&#x7C7B;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;<code>web.xml</code>&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;<code>servlet</code>&#xFF1A;</p>
+<pre><code class="lang-xml"><span class="hljs-meta">&lt;!DOCTYPE web-app PUBLIC
+        &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;
+        &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot; &gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">display-name</span>&gt;</span>Archetype Created Web Application<span class="hljs-tag">&lt;/<span class="hljs-name">display-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>helloWorldServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>samples.servlet.HelloWorldServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>helloWorldServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/helloworld<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">welcome-file-list</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">welcome-file</span>&gt;</span>/helloworld<span class="hljs-tag">&lt;/<span class="hljs-name">welcome-file</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">welcome-file-list</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span>
+</code></pre>
+<p>web.xml&#x4E2D;&#x7684;<code>&lt;servlet&gt;&lt;/servlet&gt;</code>&#x7528;&#x6765;&#x58F0;&#x660E;&#x4E00;&#x4E2A;<code>servlet</code>&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x7684;&#x4E3B;&#x8981;&#x5143;&#x7D20;&#x6709;&#xFF1A;</p>
+<ul>
+<li><code>&lt;servlet-name&gt;&lt;/sevlet-name&gt;</code>: &#x6307;&#x5B9A;servlet&#x7684;&#x540D;&#x79F0;</li>
+<li><code>&lt;servlet-class&gt;&lt;/servlet-class&gt;</code>:&#x6307;&#x5B9A;servlet&#x7684;&#x7C7B;&#x540D;&#x79F0;</li>
+<li><code>&lt;jsp-file&gt;&lt;/jsp-file&gt;</code> &#x6307;&#x5B9A;web&#x7AD9;&#x53F0;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;JSP&#x7F51;&#x9875;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</li>
+<li><code>&lt;init-param&gt;&lt;/init-param&gt;</code> &#x7528;&#x6765;&#x5B9A;&#x4E49;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x6709;&#x591A;&#x4E2A;<code>init-param</code>&#x3002;&#x5728;servlet&#x7C7B;&#x4E2D;&#x901A;&#x8FC7;<code>getInitParamenter(String name)</code>&#x65B9;&#x6CD5;&#x8BBF;&#x95EE;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;</li>
+<li><code>&lt;load-on-startup&gt;&lt;/load-on-startup&gt;</code>&#x6307;&#x5B9A;&#x5F53;Web&#x5E94;&#x7528;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x88C5;&#x8F7D;Servlet&#x7684;&#x6B21;&#x5E8F;&#x3002;&#x5F53;&#x503C;&#x4E3A;&#x6B63;&#x6570;&#x6216;&#x96F6;&#x65F6;&#xFF1A;<code>Servlet</code>&#x5BB9;&#x5668;&#x5148;&#x52A0;&#x8F7D;&#x6570;&#x503C;&#x5C0F;&#x7684;servlet&#xFF0C;&#x518D;&#x4F9D;&#x6B21;&#x52A0;&#x8F7D;&#x5176;&#x4ED6;&#x6570;&#x503C;&#x5927;&#x7684;servlet&#x3002;&#x5F53;&#x503C;&#x4E3A;&#x8D1F;&#x6216;&#x672A;&#x5B9A;&#x4E49;&#xFF1A;<code>Servlet</code>&#x5BB9;&#x5668;&#x5C06;&#x5728;Web&#x5BA2;&#x6237;&#x9996;&#x6B21;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;servlet&#x65F6;&#x52A0;&#x8F7D;&#x5B83;&#x3002;</li>
+</ul>
+<p><code>&lt;servlet-mapping&gt;&lt;/servlet-mapping&gt;</code> &#x7528;&#x6765;&#x5B9A;&#x4E49;servlet&#x6240;&#x5BF9;&#x5E94;&#x7684;URL&#xFF0C;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#xFF1A;</p>
+<ul>
+<li><code>&lt;servlet-name&gt;&lt;/servlet-name&gt;</code> &#x6307;&#x5B9A;servlet&#x7684;&#x540D;&#x79F0;</li>
+<li><code>&lt;url-pattern&gt;&lt;/url-pattern&gt;</code> &#x6307;&#x5B9A;servlet&#x6240;&#x5BF9;&#x5E94;&#x7684;URL</li>
+</ul>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- &#x57FA;&#x672C;&#x914D;&#x7F6E;--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>snoop<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>SnoopServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>snoop<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/snoop<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- &#x9AD8;&#x7EA7;&#x914D;&#x7F6E;--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>snoop<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>SnoopServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">run-as</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Security role for anonymous access<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">role-name</span>&gt;</span>tomcat<span class="hljs-tag">&lt;/<span class="hljs-name">role-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">run-as</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>snoop<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/snoop<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+</code></pre>
+<h2 id="5-&#x8FD0;&#x884C;">5. &#x8FD0;&#x884C;</h2>
+<p>&#x8FD0;&#x884C;&#x4E0A;&#x9762;&#x7684;web&#x7A0B;&#x5E8F;&#xFF0C;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x8F93;&#x5165;<code>http://localhost:8080/helloworld</code>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x9875;&#x9762;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;&#xFF1A;Hello World.</p>
+<h2 id="6-&#x4E0B;&#x4E00;&#x8282;">6. &#x4E0B;&#x4E00;&#x8282;</h2>
+<p>&#x8FD9;&#x8282;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5165;&#x95E8;&#x8BFE;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x6B21;&#x5B66;&#x4E60;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;<code>Servlet</code>&#x6709;&#x4E86;&#x521D;&#x6B65;&#x4E86;&#x89E3;&#xFF0C;&#x61C2;&#x5F97;&#x4E86;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x7684;<code>Servlet</code>&#x5C0F;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x4E00;&#x6B65;&#xFF0C;&#x6211;&#x4EEC;&#x7814;&#x7A76;&#x4E00;&#x4E0B;<code>Servlet</code>&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</p>
+<h2 id="7-&#x603B;&#x7ED3;">7. &#x603B;&#x7ED3;</h2>
+<ul>
+<li><p>&#x4EC0;&#x4E48;&#x662F;<code>Servlet</code>?&#x5B9A;&#x4E49;&#xFF1F;</p>
+<p>  &#x4E00;&#x4E2A;Servlet&#x662F;&#x5728;web&#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x5C0F;java&#x7A0B;&#x5E8F;&#xFF0C;&#x901A;&#x5E38;&#x63A5;&#x53D7;&#x5E76;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;http&#x8BF7;&#x6C42;</p>
+</li>
+<li></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="带着问题去学习.html" class="navigation navigation-prev " aria-label="Previous page: 带着问题去学习">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Servlet的生命周期.html" class="navigation navigation-next " aria-label="Next page: Servlet的生命周期">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"编写你的第一个Servlet","level":"1.2.2","depth":2,"next":{"title":"Servlet的生命周期","level":"1.2.3","depth":2,"path":"Servlet/Servlet的生命周期.md","ref":"Servlet/Servlet的生命周期.md","articles":[]},"previous":{"title":"带着问题去学习","level":"1.2.1","depth":2,"path":"Servlet/带着问题去学习.md","ref":"Servlet/带着问题去学习.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Servlet/编写你的第一个Servlet.md","mtime":"2017-08-25T06:03:05.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-25T06:25:22.905Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

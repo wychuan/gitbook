@@ -1,0 +1,622 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Servlet的生命周期 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="WebServlet注解.html" />
+    
+    
+    <link rel="prev" href="编写你的第一个Servlet.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../test/level2.html">
+            
+                <a href="../test/level2.html">
+            
+                    
+                    二级目录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" data-path="../test/level3.html">
+            
+                <a href="../test/level3.html">
+            
+                    
+                    三级目录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1.1" data-path="../test/level4.html">
+            
+                <a href="../test/level4.html">
+            
+                    
+                    四级目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Servlet.html">
+            
+                <a href="Servlet.html">
+            
+                    
+                    Servlet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="带着问题去学习.html">
+            
+                <a href="带着问题去学习.html">
+            
+                    
+                    带着问题去学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="编写你的第一个Servlet.html">
+            
+                <a href="编写你的第一个Servlet.html">
+            
+                    
+                    编写你的第一个Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="Servlet的生命周期.html">
+            
+                <a href="Servlet的生命周期.html">
+            
+                    
+                    Servlet的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="WebServlet注解.html">
+            
+                <a href="WebServlet注解.html">
+            
+                    
+                    @WebServlet注解来开发Servlet
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Servlet的生命周期</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="servlet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;">Servlet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h1>
+<h2 id="1-&#x5E26;&#x7740;&#x95EE;&#x9898;&#x53BB;&#x5B66;&#x4E60;">1. &#x5E26;&#x7740;&#x95EE;&#x9898;&#x53BB;&#x5B66;&#x4E60;</h2>
+<ul>
+<li><code>Servlet</code>&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1F;</li>
+<li><code>Servlet</code>&#x5BF9;&#x8C61;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x521B;&#x5EFA;&#xFF0C;</li>
+<li><code>Servlet</code>&#x662F;&#x5426;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF1F;&#x5904;&#x7406;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5417;&#xFF1F;</li>
+<li><code>Servlet</code>&#x5BF9;&#x8C61;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9500;&#x6BC1;&#xFF1F;</li>
+<li>&#x5904;&#x7406;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;<code>Servlet</code>&#x5BF9;&#x8C61;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5417;&#xFF1F;</li>
+<li></li>
+</ul>
+<h2 id="2-servlet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;">2. Servlet&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2>
+<p>==<code>Servlet</code>&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1F;==</p>
+<p>&#x4E00;&#x4E2A;<code>Servlet</code>&#x662F;&#x5728;web&#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x5C0F;java&#x7A0B;&#x5E8F;&#xFF0C;&#x901A;&#x5E38;&#x63A5;&#x53D7;&#x5E76;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;http&#x8BF7;&#x6C42;&#xFF0C;<code>Servlet</code>&#x4ECE;&#x521B;&#x5EFA;&#x5230;&#x9500;&#x6BC1;&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li><code>init()</code></li>
+<li><code>service()</code></li>
+<li><code>destroy()</code></li>
+</ul>
+<p>&#x6BCF;&#x4E2A;<code>Servlet</code>&#x90FD;&#x4F1A;&#x5B9E;&#x73B0;&#x8FD9;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x8FD0;&#x884C;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+<blockquote>
+<p>This interface defines methods to initialize a servlet,to service requests, and to remove a servlet from the server.These are known as life-cycle methods and are called in the following sequence:</p>
+<ul>
+<li>The servlet is constructed, then initialized with the init method.</li>
+<li>Any calls from clients to the service method are handled.</li>
+<li>The servlet is taken out of service, then destroyed with the destroy method, then garbage collected and finalized.</li>
+</ul>
+</blockquote>
+<h3 id="21-init">2.1 <code>init()</code></h3>
+<p>==<code>Servlet</code>&#x5BF9;&#x8C61;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x521B;&#x5EFA;?==</p>
+<p><code>servlet</code>&#x5BB9;&#x5668;&#x5728;<code>servlet</code>&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x8C03;&#x7528;<code>init</code>&#x65B9;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<ol>
+<li>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>Servlet</code>&#x5BF9;&#x8C61;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#x5230;&#x6765;&#x65F6;&#x521B;&#x5EFA;&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;web.xml&#x6587;&#x4EF6;&#x914D;&#x7F6E;Servlet &#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&#xFF0C;<code>&lt;load-on-startup&gt;&#x6570;&#x5B57;&lt;/load-on-startup&gt;</code>&#xFF0C;&#x8868;&#x793A;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x521B;&#x5EFA;&#xFF0C;&#x5E76;&#x4F9D;&#x7167;&#x6570;&#x5B57;&#x5927;&#x5C0F;&#x6309;&#x987A;&#x5E8F;&#x521B;&#x5EFA;&#xFF0C;&#x5C0F;&#x6570;&#x5B57;&#x4F18;&#x5148;&#x52A0;&#x8F7D;&#xFF0C;&#x5728;<code>&lt;Servlet&gt;&lt;/Servlet&gt;</code>&#x6807;&#x7B7E;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x4E00;&#x822C;&#x53EA;&#x6709;&#x91CD;&#x8981;&#x7684;<code>Servlet</code>&#x624D;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x3002;</li>
+</ol>
+</blockquote>
+<ol>
+<li><strong>&#x5728;<code>servlet</code>&#x6784;&#x9020;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5728;&#x8C03;&#x7528;<code>service()</code>&#x4E4B;&#x524D;&#x8C03;&#x7528;<code>init()</code>&#x65B9;&#x6CD5;&#xFF1B;</strong></li>
+<li><strong><code>init</code>&#x65B9;&#x6CD5;&#x5728;<code>servlet</code>&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x4EC5;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF1B;</strong></li>
+<li><strong><code>init</code>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6210;&#x529F;&#x540E;&#xFF0C;<code>servlet</code>&#x624D;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#x3002;</strong></li>
+<li><code>init()</code>&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E00;&#x4E2A;<code>ServletConfig</code>&#x53C2;&#x6570;&#xFF0C;&#x6B64;&#x53C2;&#x6570;&#x5305;&#x542B;&#x4E86;<code>servlet</code>&#x914D;&#x7F6E;&#x548C;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;&#xFF08;<code>web.xml</code>&#x6587;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;&#x7684;name-value&#x53C2;&#x6570;)<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+</code></pre>
+<code>Servlet</code>&#x63A5;&#x53E3;&#x4E2D;<code>init</code>&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Called by the servlet container to indicate to a servlet that the 
+ * servlet is being placed into service.
+ *
+ * &lt;p&gt;The servlet container calls the &lt;code&gt;init&lt;/code&gt;
+ * method exactly once after instantiating the servlet.
+ * The &lt;code&gt;init&lt;/code&gt; method must complete successfully
+ * before the servlet can receive any requests.
+ *
+ * &lt;p&gt;The servlet container cannot place the servlet into service
+ * if the &lt;code&gt;init&lt;/code&gt; method
+ * &lt;ol&gt;
+ * &lt;li&gt;Throws a &lt;code&gt;ServletException&lt;/code&gt;
+ * &lt;li&gt;Does not return within a time period defined by the Web server
+ * &lt;/ol&gt;
+ *
+ *
+ * <span class="hljs-doctag">@param</span> config            a &lt;code&gt;ServletConfig&lt;/code&gt; object 
+ *                    containing the servlet&apos;s
+ *                     configuration and initialization parameters
+ *
+ *
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(ServletConfig config)</span> <span class="hljs-keyword">throws</span> ServletException</span>;
+</code></pre>
+<h3 id="22-service">2.2 <code>service()</code></h3>
+<p>&#x5728;<code>servlet</code>&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;web&#x5BB9;&#x5668;&#x4F1A;&#x8C03;&#x7528;<code>service</code>&#x65B9;&#x6CD5;&#x6765;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#xFF1B;</p>
+<p>==<code>Servlet</code>&#x662F;&#x5426;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF1F;&#x5904;&#x7406;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5417;&#xFF1F;==</p>
+<blockquote>
+<ul>
+<li><code>servlets</code>&#x901A;&#x5E38;&#x8FD0;&#x884C;&#x5728;&#x53EF;&#x4EE5;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x591A;&#x7EBF;&#x7A0B;<code>servlet</code>&#x5BB9;&#x5668;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<code>servlet</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x8003;&#x8651;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x8BBF;&#x95EE;&#x4E00;&#x4E9B;&#x7C7B;&#x4F3C;&#x6587;&#x4EF6;&#x7684;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x3001;&#x53D8;&#x91CF;&#x7B49;&#xFF1B;</li>
+<li><code>servlet</code>&#x7684;<code>service</code>&#x65B9;&#x6CD5;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;<code>Servlet</code>&#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x3002;</li>
+</ul>
+</blockquote>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ServletException </span>{
+    logger.info(<span class="hljs-string">&quot;Servlet:{} init method invoked.&quot;</span>, <span class="hljs-keyword">this</span>.getClass());
+}
+
+<span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">service</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>{
+    logger.info(<span class="hljs-string">&quot;Servlet:{} service method invoked.&quot;</span>, <span class="hljs-keyword">this</span>.getClass());
+    <span class="hljs-keyword">super</span>.service(req, resp);
+}
+</code></pre>
+<p>&#x65E5;&#x5FD7;&#xFF1A;</p>
+<pre><code class="lang-text">21:50:39.314 [http-nio-8080-exec-6] INFO samples.servlet.HelloWorldServlet - Servlet:class samples.servlet.HelloWorldServlet service method invoked.
+21:50:43.332 [http-nio-8080-exec-7] INFO samples.servlet.HelloWorldServlet - Servlet:class samples.servlet.HelloWorldServlet service method invoked.
+21:50:44.244 [http-nio-8080-exec-8] INFO samples.servlet.HelloWorldServlet - Servlet:class samples.servlet.HelloWorldServlet service method invoked.
+21:50:44.527 [http-nio-8080-exec-9] INFO samples.servlet.HelloWorldServlet - Servlet:class samples.servlet.HelloWorldServlet service method invoked.
+21:50:44.728 [http-nio-8080-exec-10] INFO samples.servlet.HelloWorldServlet - Servlet:class samples.servlet.HelloWorldServlet service method invoked.
+</code></pre>
+<p>==&#x5904;&#x7406;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x7684;Servlet&#x5BF9;&#x8C61;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5417;&#xFF1F;==</p>
+<p>&#x5237;&#x65B0;&#x540C;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#xFF0C;&#x4ECE;&#x4E0A;&#x9762;&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
+<ol>
+<li>&#x6BCF;&#x6B21;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#x90FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x7EBF;&#x7A0B;,&#x6240;&#x4EE5;servlet&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x7684;&#xFF1B;</li>
+<li>&#x6CA1;&#x6709;&#x53D1;&#x73B0;<code>init</code>&#x65B9;&#x6CD5;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;<code>servlet</code>&#x5BF9;&#x8C61;&#xFF1B;</li>
+</ol>
+<p><code>Servlet</code>&#x63A5;&#x53E3;&#x7684;<code>service()</code>&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * Called by the servlet container to allow the servlet to respond(&#x56DE;&#x7B54;) to 
+ * a request.
+ *
+ * &lt;p&gt;This method is only called after the servlet&apos;s &lt;code&gt;init()&lt;/code&gt;
+ * method has completed successfully.
+ * 
+ * &lt;p&gt;  The status code of the response always should be set for a servlet 
+ * that throws or sends an error.
+ *
+ * 
+ * &lt;p&gt;Servlets typically run inside multithreaded servlet containers
+ * that can handle multiple requests concurrently. Developers must 
+ * be aware to synchronize access to any shared resources such as files,
+ * network connections, and as well as the servlet&apos;s class and instance 
+ * variables. 
+ *
+ * <span class="hljs-doctag">@param</span> req     the &lt;code&gt;ServletRequest&lt;/code&gt; object that contains
+ *            the client&apos;s request
+ *
+ * <span class="hljs-doctag">@param</span> res     the &lt;code&gt;ServletResponse&lt;/code&gt; object that contains
+ *            the servlet&apos;s response
+ *
+ * <span class="hljs-doctag">@exception</span> ServletException     if an exception occurs that interferes
+ *                    with the servlet&apos;s normal operation 
+ *
+ * <span class="hljs-doctag">@exception</span> IOException         if an input or output exception occurs
+ *
+ */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">service</span><span class="hljs-params">(ServletRequest req, ServletResponse res)</span>
+<span class="hljs-keyword">throws</span> ServletException, IOException</span>;
+</code></pre>
+<p>&#x5728;<code>HttpServlet</code>&#x4E2D;&#x6709;&#x9ED8;&#x8BA4;&#x5BF9;<code>http</code>&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x5199;&#x65B0;&#x65B9;&#x6CD5;&#x3002;</p>
+<ul>
+<li><code>service</code>&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E86;&#x6240;&#x6709;&#x80FD;&#x591F;&#x5904;&#x7406;&#x7684;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#x3002;</li>
+<li><code>service</code>&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#xFF0C;&#x5206;&#x53D1;&#x5230;&#x76F8;&#x5E94;&#x7684;<code>doXXX</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1B;</li>
+<li>&#x5728;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;<code>Servlet</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x5904;&#x7406;&#x4E0D;&#x540C;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;<code>doGet</code>&#x3001;<code>doPost</code>&#x7B49;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#xFF0C;&#x90A3;&#x4E48;&#x7236;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#x5C06;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x7236;&#x7C7B;&#x4E00;&#x822C;&#x4F1A;&#x8FD4;&#x56DE;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF1B;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span>
+        <span class="hljs-keyword">throws</span> ServletException, IOException </span>{
+    String protocol = req.getProtocol();
+    String msg = lStrings.getString(<span class="hljs-string">&quot;http.method_get_not_supported&quot;</span>);
+    <span class="hljs-keyword">if</span> (protocol.endsWith(<span class="hljs-string">&quot;1.1&quot;</span>)) {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, msg);
+    } <span class="hljs-keyword">else</span> {
+        resp.sendError(HttpServletResponse.SC_BAD_REQUEST, msg);
+    }
+}
+
+<span class="hljs-comment">/**
+ * Receives standard HTTP requests from the public
+ * &lt;code&gt;service&lt;/code&gt; method and dispatches
+ * them to the &lt;code&gt;do&lt;/code&gt;&lt;i&gt;XXX&lt;/i&gt; methods defined in 
+ * this class. This method is an HTTP-specific version of the 
+ * {<span class="hljs-doctag">@link</span> javax.servlet.Servlet#service} method. There&apos;s no
+ * need to override this method.
+ *
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">service</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span>
+    <span class="hljs-keyword">throws</span> ServletException, IOException </span>{
+    String method = req.getMethod();
+
+    <span class="hljs-keyword">if</span> (method.equals(METHOD_GET)) {
+        <span class="hljs-keyword">long</span> lastModified = getLastModified(req);
+        <span class="hljs-keyword">if</span> (lastModified == -<span class="hljs-number">1</span>) {
+            <span class="hljs-comment">// servlet doesn&apos;t support if-modified-since, no reason</span>
+            <span class="hljs-comment">// to go through further expensive logic</span>
+            doGet(req, resp);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">long</span> ifModifiedSince = req.getDateHeader(HEADER_IFMODSINCE);
+            <span class="hljs-keyword">if</span> (ifModifiedSince &lt; lastModified) {
+                <span class="hljs-comment">// If the servlet mod time is later, call doGet()</span>
+                <span class="hljs-comment">// Round down to the nearest second for a proper compare</span>
+                <span class="hljs-comment">// A ifModifiedSince of -1 will always be less</span>
+                maybeSetLastModified(resp, lastModified);
+                doGet(req, resp);
+            } <span class="hljs-keyword">else</span> {
+                resp.setStatus(HttpServletResponse.SC_NOT_MODIFIED);
+            }
+        }
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_HEAD)) {
+        <span class="hljs-keyword">long</span> lastModified = getLastModified(req);
+        maybeSetLastModified(resp, lastModified);
+        doHead(req, resp);
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_POST)) {
+        doPost(req, resp);
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_PUT)) {
+        doPut(req, resp);
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_DELETE)) {
+        doDelete(req, resp);
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_OPTIONS)) {
+        doOptions(req,resp);
+
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (method.equals(METHOD_TRACE)) {
+        doTrace(req,resp);
+
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// Note that this means NO servlet supports whatever</span>
+        <span class="hljs-comment">// method was requested, anywhere on this server.</span>
+        <span class="hljs-comment">//</span>
+
+        String errMsg = lStrings.getString(<span class="hljs-string">&quot;http.method_not_implemented&quot;</span>);
+        Object[] errArgs = <span class="hljs-keyword">new</span> Object[<span class="hljs-number">1</span>];
+        errArgs[<span class="hljs-number">0</span>] = method;
+        errMsg = MessageFormat.format(errMsg, errArgs);
+
+        resp.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED, errMsg);
+    }
+}
+</code></pre>
+<h3 id="23-destroy">2.3 <code>destroy()</code></h3>
+<p>==Servlet&#x5BF9;&#x8C61;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9500;&#x6BC1;&#xFF1F;==</p>
+<p><code>Servlet</code>&#x5BF9;&#x8C61;&#x5728;&#x957F;&#x65F6;&#x95F4;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;&#x6216;&#x8005;&#x662F;&#x670D;&#x52A1;&#x5668;&#x5173;&#x95ED;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<code>destroy()</code>&#x65B9;&#x6CD5;&#x6765;&#x9500;&#x6BC1;<code>Servlet</code> &#x5BF9;&#x8C61;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5728;<code>servlet</code>&#x751F;&#x547D;&#x5468;&#x671F;&#x7ED3;&#x675F;&#x65F6;&#x91CA;&#x653E;&#x4E00;&#x4E9B;&#x8D44;&#x6E90;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x6216;&#x7F51;&#x7EDC;&#x8D44;&#x6E90;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
+<p><strong><code>destroy</code>&#x65B9;&#x6CD5;&#x548C;<code>init</code>&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#xFF0C;&#x5728;<code>servlet</code>&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x53EA;&#x80FD;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF1B;</strong></p>
+<p>&#x5728;<code>Servlet</code>&#x63A5;&#x53E3;&#x4E2D;<code>destroy</code>&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ *
+ * Called by the servlet container to indicate to a servlet that the
+ * servlet is being taken out of service.  This method is
+ * only called once all threads within the servlet&apos;s
+ * &lt;code&gt;service&lt;/code&gt; method have exited or after a timeout
+ * period has passed. After the servlet container calls this 
+ * method, it will not call the &lt;code&gt;service&lt;/code&gt; method again
+ * on this servlet.
+ *
+ * &lt;p&gt;This method gives the servlet an opportunity 
+ * to clean up any resources that are being held (for example, memory,
+ * file handles, threads) and make sure that any persistent state is
+ * synchronized with the servlet&apos;s current state in memory.
+ *
+ */</span>
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+<p>&#x6B64;&#x6587;&#x4E3B;&#x8981;&#x8BB2;&#x4E86;&#x4E00;&#x4E2A;<code>servlet</code>&#x5728;web&#x5BB9;&#x5668;&#x4E2D;&#x4ECE;&#x521B;&#x5EFA;&#x5230;&#x9500;&#x6BC1;&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x603B;&#x7ED3;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>servlet</code>&#x751F;&#x547D;&#x5468;&#x671F;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x521D;&#x59CB;&#x5316;(&#x4F1A;&#x8C03;&#x7528;<code>init</code>&#x65B9;&#x6CD5;)&#x3001;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF08;&#x8C03;&#x7528;<code>service</code>&#x65B9;&#x6CD5;)&#x3001;&#x9500;&#x6BC1;(&#x8C03;&#x7528;<code>destroy</code>&#x65B9;&#x6CD5;)&#xFF1B;</li>
+<li><code>servlet</code>&#x7684;<code>init</code>&#x65B9;&#x6CD5;&#x548C;<code>destroy</code>&#x65B9;&#x6CD5;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF1B;</li>
+<li>&#x5728;&#x5B9E;&#x73B0;<code>servlet</code>&#x7684;<code>doXXX</code>&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x6CE8;&#x610F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x4E3A;<code>servlet</code>&#x5BB9;&#x5668;&#x4E00;&#x822C;&#x90FD;&#x4F1A;&#x5E76;&#x884C;&#x5904;&#x7406;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#xFF1B;</li>
+<li><code>servlet</code>&#x7684;<code>service</code>&#x4F1A;&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;(method)&#x5206;&#x522B;&#x8C03;&#x7528;&#x4E0D;&#x540C;&#x7684;<code>doXXX</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&#x4E3A;<code>GET</code>&#x5219;&#x4F1A;&#x8C03;&#x7528;<code>doGet</code>&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x5199;<code>service</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x5B9E;&#x73B0;<code>doXXX</code>&#x65B9;&#x6CD5;&#xFF1B;</li>
+</ul>
+<h1 id="&#x9057;&#x7559;&#x95EE;&#x9898;">&#x9057;&#x7559;&#x95EE;&#x9898;</h1>
+<ul>
+<li>==<code>init</code>&#x65B9;&#x6CD5;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;<code>ServletConfig</code>&#x53C2;&#x6570;&#xFF0C;&#x6B64;&#x7C7B;&#x578B;&#x662F;&#x4EC0;&#x4E48;&#x4E1C;&#x4E1C;&#xFF1F;==</li>
+<li>==<code>service</code>&#x65B9;&#x6CD5;&#x63A5;&#x6536;&#x4E86;<code>HttpServletRequest</code>&#x548C;<code>HttpServletResponse</code>&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x7528;&#x6CD5;&#x7814;&#x7A76;&#x4E00;&#x4E0B;&#xFF1B;==</li>
+<li>==&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x4E00;&#x76F4;&#x8BF4;&#x7684;<code>servlet</code>&#x5BB9;&#x5668;&#x6216;&#x53EB;web&#x5BB9;&#x5668;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<code>Servlet</code>&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x7684;&#x8FD9;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;<code>servlet</code>&#x5BB9;&#x5668;(&#x5982;tomcat)&#x7A76;&#x7ADF;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1F;==</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="编写你的第一个Servlet.html" class="navigation navigation-prev " aria-label="Previous page: 编写你的第一个Servlet">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="WebServlet注解.html" class="navigation navigation-next " aria-label="Next page: @WebServlet注解来开发Servlet">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Servlet的生命周期","level":"1.2.3","depth":2,"next":{"title":"@WebServlet注解来开发Servlet","level":"1.2.4","depth":2,"path":"Servlet/WebServlet注解.md","ref":"Servlet/WebServlet注解.md","articles":[]},"previous":{"title":"编写你的第一个Servlet","level":"1.2.2","depth":2,"path":"Servlet/编写你的第一个Servlet.md","ref":"Servlet/编写你的第一个Servlet.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Servlet/Servlet的生命周期.md","mtime":"2017-08-25T06:05:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-08-25T06:25:22.905Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
